@@ -1,26 +1,3 @@
-
-// // Loop through the articles and generate HTML for each
-// for (var i = 0; i < articles.length; i++) {
-//     var article = articles[i];
-
-//     var articleHtml = `
-//         <div class="article">
-//             <div class="headline">${article.headline}</div>
-//             <div class="date">${article.date}</div>
-//             <div class="author">${article.author}</div>
-//             <div class="source-name">${article.source.name}</div>
-//             <div class="content">${article.content}</div>
-//             <div class="url">${article.url}</div>
-//             <div class="url-to-image">${article.urlToImage}</div>
-//             <div class="sentiment">${article.sentiment}</div>
-//         </div>
-//     `;
-
-//     // Append the generated HTML to a container (e.g., a div with id "article-container")
-//     document.getElementById("article-container").innerHTML += articleHtml;
-// }
-
-
 var articles = [
     {
         headline: "Sunny Skies Forecasted for the Weekend",
@@ -31,7 +8,7 @@ var articles = [
         },
         content: "A perfect weekend ahead with clear skies and warm temperatures.",
         url: "https://weatherchannel.com/weekend-forecast",
-        urlToImage: "https://weatherchannel.com/images/sunny-weekend.jpg",
+        urlToImage: "https://placekitten.com/400/300", // Replace with a cat image placeholder URL
         sentiment: "Positive"
     },
     {
@@ -43,7 +20,7 @@ var articles = [
         },
         content: "XYZ Tech, a cutting-edge start-up, secures $10 million in funding for its revolutionary product.",
         url: "https://techcrunch.com/xyz-tech-funding",
-        urlToImage: "https://techcrunch.com/images/xyz-tech.jpg",
+        urlToImage: "https://placekitten.com/400/301", // Replace with a cat image placeholder URL
         sentiment: "Positive"
     },
     {
@@ -55,7 +32,7 @@ var articles = [
         },
         content: "A recent government decision has ignited heated discussions across the nation.",
         url: "https://dailydebate.com/controversial-decision",
-        urlToImage: "https://dailydebate.com/images/protest.jpg",
+        urlToImage: "https://placekitten.com/400/302", // Replace with a cat image placeholder URL
         sentiment: "Negative"
     },
     {
@@ -67,7 +44,7 @@ var articles = [
         },
         content: "Unearth the mysteries of the pharaohs in this fascinating archaeological exploration.",
         url: "https://historytoday.com/secrets-of-ancient-egypt",
-        urlToImage: "https://historytoday.com/images/pyramids.jpg",
+        urlToImage: "https://placekitten.com/400/303", // Replace with a cat image placeholder URL
         sentiment: "Positive"
     },
     {
@@ -79,7 +56,7 @@ var articles = [
         },
         content: "Investors remain cautious as stock prices fluctuate amid economic uncertainty.",
         url: "https://financialtimes.com/stock-market-volatility",
-        urlToImage: "https://financialtimes.com/images/stock-market.jpg",
+        urlToImage: "https://placekitten.com/400/304", // Replace with a cat image placeholder URL
         sentiment: "Neutral"
     },
     {
@@ -91,7 +68,7 @@ var articles = [
         },
         content: "Government unveils ambitious plans to combat climate change and protect ecosystems.",
         url: "https://greenplanetnews.com/environmental-policies",
-        urlToImage: "https://greenplanetnews.com/images/green-earth.jpg",
+        urlToImage: "https://placekitten.com/400/305", // Replace with a cat image placeholder URL
         sentiment: "Positive"
     },
     {
@@ -103,7 +80,7 @@ var articles = [
         },
         content: "Overwhelmed hospitals and supply shortages pose major obstacles to healthcare providers.",
         url: "https://healthjournal.com/healthcare-challenges",
-        urlToImage: "https://healthjournal.com/images/hospital.jpg",
+        urlToImage: "https://placekitten.com/400/306", // Replace with a cat image placeholder URL
         sentiment: "Negative"
     },
     {
@@ -115,7 +92,7 @@ var articles = [
         },
         content: "A showcase of films from around the world promises a vibrant celebration of cultures.",
         url: "https://cinematoday.com/diversity-film-festival",
-        urlToImage: "https://cinematoday.com/images/film-festival.jpg",
+        urlToImage: "https://placekitten.com/400/307", // Replace with a cat image placeholder URL
         sentiment: "Positive"
     }
     // Additional objects with sentiment data can be included here
