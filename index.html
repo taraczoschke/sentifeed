@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentifeed 2</title>
+    <link rel="stylesheet" href="/style.css">
+
+<body class="content-grid">
+<header class="sidebar">
+    <h1>[<span>senti</span>FEED]</h1>
+<nav class="flex">
+<div class="main-nav-container flex">
+    <button data-target="sentiment">sentiment</button>
+    <button data-target="country">country</button>
+    <button data-target="topic">topic</button>
+</div>
+<div class="sub-nav-container" id="sentiment">
+    <button>all</button>
+    <button data-bgcolor-class="very-negative">very negative</button>
+    <button data-bgcolor-class="negative">negative</button>
+    <button data-bgcolor-class="neutral">neutral</button>
+    <button data-bgcolor-class="primary">positive</button>
+</div>
+<div class="sub-nav-container" id="country">
+    <button>all</button>
+    <button>united states</button>
+    <button>united kingdom</button>
+    <button>china</button>
+    <button>new zealand</button>
+</div>
+<div class="sub-nav-container" id="topic">
+    <button>all</button>
+    <button>world</button>
+    <button>finance</button>
+    <button>technology</button>
+    <button>sports</button>
+    <button>science</button>
+</div>
+</nav>
+</header>
+
+<div class="card-container content">
+    <div class="card neu-bg">
+      <img src="/images/neu.webp">
+      <div class="card-details">
+          <p>27th October, 2023</p>
+          <a href="https://edition.cnn.com/2023/10/27/world/abandoned-golf-courses-reclaimed-by-nature-c2e-spc-scn-intl/index.html#:~:text=Conservation%20nonprofits%20and%20local%20authorities,natural%20defenses%20against%20climate%20change">CNN</a>                      
+      </div>
+      <div class="card-content">
+      <h2 class="title">Abandoned golf courses are being reclaimed by nature</h2>
+      <p class="truncate-text" data-max-chars="140">Conservation nonprofits and local authorities are looking to acquire golf courses that have been abandoned and repurpose them into landscapes that boost biodiversity and build natural defenses against climate change.</p>
+      </div>
+  </div>
+   <div class="card pos-bg">
+      <img src="/images/pos.jpg">
+      <div class="card-details">
+          <p>16th August, 2021</p>
+          <a href="https://www.standard.co.uk/news/uk/care-home-kent-sevenoaks-b950889.html">The Standard</a>                                  
+      </div>
+      <div class="card-content">
+      <h2 class="title">Care home surprises Audrey, 91, with re-enactment of her granddaughter’s wedding</h2>
+      <p class="truncate-text" data-max-chars="140">Audrey Dear was unable to attend the special day because of Covid restrictions so her care home brought the celebrations to her.</p>
+      </div>
+  </div>
+   <div class="card neg-bg">
+      <img src="/images/med-neg.jpg">
+      <div class="card-details">
+          <p>29th October, 2023</p>
+          <a href="https://www.latimes.com/california/story/2023-10-28/freinds-star-matthew-perry-dead-at-56">Los Angeles Times</a>                                  
+      </div>
+      <div class="card-content">
+      <h2 class="title">Matthew Perry of 'Friends' fame found dead at his L.A. home</h2>
+      <p class="truncate-text" data-max-chars="140">Perry, who rose to fame on the sitcom "Friends", was found dead at his Los Angeles home from suspected drowning.</p>
+      </div>
+  </div>
+  <div class="card very-neg-bg">
+      <img src="/images/neg.jpeg">
+      <div class="card-details">
+          <p>28th October, 2023</p>
+          <a href="https://www.bbc.com/news/world-europe-67238572">BBC</a>                                  
+      </div>
+      <div class="card-content">
+      <h2 class="title">Spanish Church sexual abuse affected 200,000 children, commission finds</h2>
+      <p class="truncate-text" data-max-chars="140">More than 200,000 children are estimated to have suffered sexual abuse from Spain's Catholic clergy, an independent commission has found.</p>
+      </div>
+  </div>
+   <div class="card pos-bg">
+      <img src="/images/cow.webp">
+      <div class="card-details">
+          <p>25th June, 2021</p>
+          <a href="https://apnews.com/article/ca-state-wire-california-business-c0ee80a27a9572fd553f7d9ea67832a9">AP</a>                                  
+      </div>
+      <div class="card-content">
+      <h2 class="title">Songwriter Diane Warren saves escaped cow from slaughter</h2>
+      <p class="truncate-text" data-max-chars="140">Songwriter Diane Warren stepped in Thursday to save the life of cow that eluded capture for more than a day after a herd escaped from a Southern California slaughterhouse and stampeded through a suburb.</p>
+      </div>
+  </div>
+  <div class="card neg-bg">
+      <img src="/images/missing.webp">
+      <div class="card-details">
+          <p>23rd June, 2021</p>
+          <a href="https://www.bbc.co.uk/news/world-europe-57579576">BBC</a>                                  
+      </div>
+      <div class="card-content">
+      <h2 class="title">Missing Italian toddler found by reporter sent to cover disappearance</h2>
+      <p class="truncate-text" data-max-chars="140">A child who went missing in Italy has been found by a reporter sent to cover his disappearance, several kilometres from the boy's home.</p>
+      </div>
+  </div>
+  </div>
+  
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/main.js"></script>
+
+
+</body>
+</html>
