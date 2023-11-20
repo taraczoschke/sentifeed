@@ -1,3 +1,4 @@
+$(".sub-nav-container").hide(); 
 
 $(".main-nav-container button").click(function() {
 var targetId = $(this).data("target");
@@ -54,8 +55,11 @@ $("#country button, #topic button").each(function() {
     });
     });
 
+    $('.circle-button-container').hide()
+    $('.rate-button').on("click", function () {
+        $('.circle-button-container').slideToggle()
+    })
     
-
 // $(".tags").hide();
 
 // const colors = [
