@@ -24,6 +24,8 @@
   --accent: rgba(50, 94, 236, 1);
 }
 
+/* card backgrounds */
+
 .very-neg-bg {
     background: var(--negative);
 }
@@ -41,14 +43,15 @@
 }
 
 
-.primary {
-    background: var(--primary) !important;
-}
+/* solid colors */
 
 .accent {
   background: var(--accent)  !important;
 }
 
+.primary {
+    background: var(--primary) !important;
+}
 
 .very-negative {
     background: var(--red) !important;
@@ -66,6 +69,8 @@ span {
     color: var(--primary);
 }
 
+/* base grid */
+
 .content-grid {
       grid-template-columns: 1fr; 
       grid-template-rows: auto; 
@@ -73,18 +78,33 @@ span {
     }
 
 
+
 body {
   font-family: "Poppins", sans-serif;
 }
 
+/* psuedo classes */
+
+
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .scaled {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
+
+/* header & nav */
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 8vw);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
 
 nav {
     width: 100%;
@@ -100,47 +120,15 @@ nav {
 }
 
 .sub-nav-container {
-  gap: 1rem
-
+  gap: 1rem;
 }
 
 
-nav button {
-    color:  var(--white);
-    font-family: inherit;
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer; 
-}
-
-.main-nav-container button {
-    background-color:var(--black);
-    text-transform: uppercase;
-    font-size: var(--fs-400);
-}
-
-.sub-nav-container button {
-    background-color: rgb(53, 55, 52);
-    text-transform: lowercase;
-    font-size: var(--fs-400);
-    text-wrap: nowrap;
-
-}
-
-.main-nav-container button:hover {
-  background-color: var(--primary);
-}
-
-nav button:not(.clicked):hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-
-}
+/* card container & cards  */
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
 
 }
@@ -157,39 +145,9 @@ nav button:not(.clicked):hover {
 
 .card:hover {
   transform: scale(1.05);
-  cursor: pointer;
 }
 
-h1 {
-  font-size: clamp(2.5rem, 6vw, 8vw);
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1.5rem;
 
-
-}
-
-h2 {
-  font-size: var(--fs-500);
-}
-
-p {
-  font-weight: var(--fw-400);
-  font-size: var(--fs-400);
-}
-
-.card-details p {
-    font-size: var(--fs-300);
-    font-weight: var(--fw-200);
-}
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-  font-size: var(--fs-400);
-  font-weight: var(--fw-600);
-}
 .card img {
   max-width: 100%;
   height: 100px;
@@ -206,10 +164,105 @@ a {
   align-items: center;
 }
 
+.card-details p {
+    font-size: var(--fs-300);
+    font-weight: var(--fw-200);
+}
+
+.card-details a {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-600);
+}
+
 .card-content {
   padding: 0 20px 20px 20px;
 }
 
+.title {
+  font-size: var(--fs-500);
+}
+
+.card-content p {
+  font-weight: var(--fw-400);
+  font-size: var(--fs-400);
+}
+
+
+/* buttons */
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  text-wrap: nowrap;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+/* nav buttons  */
+
+nav button {
+    color:  var(--white);
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.main-nav-container button {
+    background-color:var(--black);
+    font-size: var(--fs-400);
+    text-transform: uppercase;
+}
+
+.sub-nav-container button {
+    background-color: rgb(53, 55, 52);
+    font-size: var(--fs-300);
+    text-transform: lowercase;
+}
+
+.main-nav-container button:hover {
+  background-color: var(--primary);
+}
+
+nav button:not(.clicked):hover {
+    transform: scale(1.05);
+}
+
+#country button:hover, #topic button:hover {
+  background-color: var(--accent);
+}
+
+/* rate buttons  */
+
+.rating-container {
+  margin-top: 1rem;
+  padding: 0px 0px 0px 15px;
+  gap: 1rem;
+}
+
+.rate-button {
+  background-color: var(--black);
+  font-size: var(--fs-300);
+  color: var(--white);
+  padding: 5px 10px;
+  }
+
+.circle-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.circle-button-container {
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* media query */
 
 @media (min-width: 768px) {
 
@@ -231,9 +284,8 @@ a {
 h1 {
     font-size: 2.7vw;
     text-align: start;
-
-
 }
+
 nav {
     flex-direction: row;
     justify-content: flex-start;

@@ -1,4 +1,3 @@
-$(".sub-nav-container").hide(); 
 
 $(".main-nav-container button").click(function() {
 var targetId = $(this).data("target");
@@ -38,7 +37,24 @@ $(this).on("mouseenter", function() {
 });
 });
 
+$("#country button, #topic button").each(function() {
+    $(this).on("mouseenter", function() {
+        if (!$(this).hasClass("clicked")) {
+            $(this).addClass('accent');
+        }
+    }).on("mouseleave", function() {
+        if (!$(this).hasClass("clicked")) {
+            $(this).removeClass('accent');
+        }
+    }).on("click", function() {
+        $(this).toggleClass("clicked scaled");
+    }).on("dblclick", function() {
+        $(this).removeClass("clicked scaled");
+        $(this).removeClass('accent');
+    });
+    });
 
+    
 
 // $(".tags").hide();
 

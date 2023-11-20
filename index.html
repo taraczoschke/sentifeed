@@ -16,7 +16,7 @@
     <button data-target="topic">topic</button>
 </div>
 <div class="sub-nav-container" id="sentiment">
-    <button>all</button>
+    <button data-bgcolor-class="accent">all</button>
     <button data-bgcolor-class="very-negative">very negative</button>
     <button data-bgcolor-class="negative">negative</button>
     <button data-bgcolor-class="neutral">neutral</button>
@@ -41,8 +41,18 @@
 </header>
 
 <div class="card-container content">
+         
     <div class="card neu-bg">
       <img src="/images/neu.webp">
+      <div class="rateme flex">
+      <button class="rate-button">rate me</button>
+        <div class="button-container flex">
+            <button class="circle-button primary"></button>
+            <button class="circle-button neutral"></button>
+            <button class="circle-button negative"></button>
+            <button class="circle-button very-negative"></button>
+        </div>
+        </div>     
       <div class="card-details">
           <p>27th October, 2023</p>
           <a href="https://edition.cnn.com/2023/10/27/world/abandoned-golf-courses-reclaimed-by-nature-c2e-spc-scn-intl/index.html#:~:text=Conservation%20nonprofits%20and%20local%20authorities,natural%20defenses%20against%20climate%20change">CNN</a>                      
@@ -51,6 +61,7 @@
       <h2 class="title">Abandoned golf courses are being reclaimed by nature</h2>
       <p class="truncate-text" data-max-chars="140">Conservation nonprofits and local authorities are looking to acquire golf courses that have been abandoned and repurpose them into landscapes that boost biodiversity and build natural defenses against climate change.</p>
       </div>
+
   </div>
    <div class="card pos-bg">
       <img src="/images/pos.jpg">
