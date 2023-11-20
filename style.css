@@ -188,11 +188,25 @@ nav {
 
 .headline {
   font-size: var(--fs-500);
+    /* Limit .headline to 4 lines */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Adjust the number of lines as needed */
+    overflow: hidden;
+
+
 }
 
 .card-content p {
   font-weight: var(--fw-400);
   font-size: var(--fs-400);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Adjust the number of lines as needed */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: normal; /* Allow wrapping within the specified number of lines */
+
 }
 
 
