@@ -9,37 +9,72 @@
 <body class="content-grid">
 <header class="sidebar">
     <h1>[<span>senti</span>FEED]</h1>
-<nav class="flex">
-<div class="main-nav-container flex">
-    <button data-target="sentiment">sentiment</button>
-    <button data-target="country">country</button>
-    <button data-target="category">category</button>
-</div>
-<div class="sub-nav-container flex" id="sentiment">
-    <button data-bgcolor-class="accent">all</button>
-    <button data-bgcolor-class="very-negative">very negative</button>
-    <button data-bgcolor-class="negative">negative</button>
-    <button data-bgcolor-class="neutral">neutral</button>
-    <button data-bgcolor-class="positive">positive</button>
-    <button data-bgcolor-class="primary">very positive</button>
 
-</div>
-<div class="sub-nav-container flex" id="country">
-    <button >all</button>
-    <button class="country-btn" data-country="us">US</button>
-    <button class="country-btn" data-country="uk">UK</button>
-    <button class="country-btn" data-country="us">CN</button>
-    <button class="country-btn" data-country="nz">NZ</button>
-</div>
-<div class="sub-nav-container flex" id="category">
-    <button>all</button>
-    <button>world</button>
-    <button>finance</button>
-    <button>technology</button>
-    <button>sports</button>
-    <button>science</button>
-</div>
-</nav>
+    <nav>
+        <form id="myForm" class="nav-container flex">
+            <div class="main-nav-container">
+                <h3 class="button main-button" data-target="sentiment">Sentiment</h3>
+    
+                <div class="sub-nav-container flex" id="sentiment">
+                <input type="radio" id="all_sentiments" name="sentiment" value="all_sentiments" checked>
+                <label class="button" for="all_sentiments">All</label>
+    
+                <input type="radio" id="positive" name="sentiment" value="positive">
+                <label class="button" for="positive">Positive</label>
+    
+                <input type="radio" id="neutral" name="sentiment" value="neutral">
+                <label class="button" for="neutral">Neutral</label>
+    
+                <input type="radio" id="negative" name="sentiment" value="negative">
+                <label class="button" for="negative">Negative</label>
+    
+                <input type="radio" id="very_negative" name="sentiment" value="very_negative">
+                <label class="button" for="very_negative">Very Negative</label>            
+            </div>
+            </div>
+            <div class="main-nav-container">
+            <h3 class="button main-button" data-target="country">Country</h3>
+            <div class="sub-nav-container flex" id="country">
+                <input type="radio" id="all_countries" name="country" value="all_countries" checked>
+                <label class="button" for="all_countries">All</label>
+    
+                <input type="radio" id="us" name="country" value="us">
+                <label class="button" for="us">United States</label>
+    
+                <input type="radio" id="uk" name="country" value="uk">
+                <label class="button" for="uk">United Kingdom</label>
+    
+                <input type="radio" id="nz" name="country" value="nz">
+                <label class="button" for="nz">New Zealand</label>
+    
+                <input type="radio" id="au" name="country" value="au">
+                <label class="button" for="au">Australia</label>
+            </div>
+        </div>
+        <div class="main-nav-container">
+            <h3 class="button main-button" data-target="category">Category</h3>
+            <div class="sub-nav-container flex" id="category">
+                <input type="radio" id="all_categories" name="category" value="all_categories" checked>
+                <label class="button" for="all_categories">All</label>
+        
+                <input type="radio" id="sports" name="category" value="sports">
+                <label class="button" for="sports">Sports</label>
+        
+                <input type="radio" id="tech" name="category" value="tech">
+                <label class="button" for="tech">Technology</label>
+        
+                <input type="radio" id="finance" name="category" value="finance">
+                <label class="button" for="finance">Finance</label>
+        
+                <input type="radio" id="science" name="category" value="science">
+                <label class="button" for="science">Science</label>
+            </div>
+        </div>
+        
+            <input class="button submit" type="submit" value="Submit">
+        </form>
+    </nav>
+    
 </header>
 
 <div class="card-container content">

@@ -1,76 +1,69 @@
-$(".sub-nav-container").hide(); 
+$('.sub-nav-container').hide();
 
-$(".main-nav-container button").click(function() {
-var targetId = $(this).data("target");
-var targetContainer = $(`#${targetId}`);
+$('.main-button').click(function() {
+    var targetId = $(this).data("target");
+    var targetContainer = $('#' + targetId);
 
-if (targetContainer.is(":visible")) {
-    targetContainer.slideUp(); 
-} else {
-    $(".sub-nav-container").hide(); 
-    targetContainer.slideToggle(); 
-}
-});
+        targetContainer.slideToggle();
+    })
 
-function handleButtonHover(button) {
-    var bgColorClass = button.data("bgcolor-class") || 'accent';
-    button.on("mouseenter", function() {
-        if (!$(this).hasClass("clicked")) {
-            $(this).addClass(bgColorClass);
-        }
-    }).on("mouseleave", function() {
-        if (!$(this).hasClass("clicked")) {
-            $(this).removeClass(bgColorClass);
-        }
-    });
-}
+// function handleButtonHover(button) {
+//     var bgColorClass = button.data("bgcolor-class") || 'accent';
+//     button.on("mouseenter", function() {
+//         if (!$(this).hasClass("clicked")) {
+//             $(this).addClass(bgColorClass);
+//         }
+//     }).on("mouseleave", function() {
+//         if (!$(this).hasClass("clicked")) {
+//             $(this).removeClass(bgColorClass);
+//         }
+//     });
+// }
 
-function handleButtonClick(button) {
-    button.on("click", function() {
-        $(this).toggleClass("clicked scaled");
-        var bgColorClass = $(this).data("bgcolor-class") || 'accent';
-        if ($(this).hasClass("clicked")) {
-            $(this).addClass(bgColorClass);
-        } else {
-            $(this).removeClass(bgColorClass);
-        }
-    });
-}
+// function handleButtonClick(button) {
+//     button.on("click", function() {
+//         $(this).toggleClass("clicked scaled");
+//         var bgColorClass = $(this).data("bgcolor-class") || 'accent';
+//         if ($(this).hasClass("clicked")) {
+//             $(this).addClass(bgColorClass);
+//         } else {
+//             $(this).removeClass(bgColorClass);
+//         }
+//     });
+// }
 
-$(".main-nav-container button").on("click", function() {
-    $(this).toggleClass("scaled primary");
-    $(".main-nav-container button").not(this).removeClass("scaled primary");
-});
+// $(".main-nav-container button").on("click", function() {
+//     $(this).toggleClass("scaled primary");
+//     $(".main-nav-container button").not(this).removeClass("scaled primary");
+// });
 
-$(".sub-nav-container button").each(function() {
-    handleButtonHover($(this));
-    handleButtonClick($(this));
-});
+// $(".sub-nav-container button").each(function() {
+//     handleButtonHover($(this));
+//     handleButtonClick($(this));
+// });
 
-$(".sub-nav-container button:first-child").each(function() {
-    $(this).click();
-});
 
-// Event listener for buttons in sub-nav-container
-$(".sub-nav-container button").on("click", function() {
-    var container = $(this).closest('.sub-nav-container');
-    var firstButton = container.find("button:first-child");
 
-    // Deselect all other buttons in the same container
-    container.find("button").not(this).removeClass("clicked scaled accent");
+// // Event listener for buttons in sub-nav-container
+// $(".sub-nav-container button").on("click", function() {
+//     var container = $(this).closest('.sub-nav-container');
+//     var firstButton = container.find("button:first-child");
 
-    // Check if the clicked button is not the first button
-    if (!$(this).is(firstButton)) {
-        if (firstButton.hasClass("clicked")) {
-            firstButton.removeClass("clicked scaled accent");
-        }
-    }
+//     // Deselect all other buttons in the same container
+//     container.find("button").not(this).removeClass("clicked scaled accent");
 
-    if (container.find("button.clicked").length === 0) {
-        firstButton.addClass("clicked scaled accent");
-    }
+//     // Check if the clicked button is not the first button
+//     if (!$(this).is(firstButton)) {
+//         if (firstButton.hasClass("clicked")) {
+//             firstButton.removeClass("clicked scaled accent");
+//         }
+//     }
 
-});
+//     if (container.find("button.clicked").length === 0) {
+//         firstButton.addClass("clicked scaled accent");
+//     }
+
+// });
 
 
 
