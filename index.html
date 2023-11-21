@@ -13,23 +13,25 @@
 <div class="main-nav-container flex">
     <button data-target="sentiment">sentiment</button>
     <button data-target="country">country</button>
-    <button data-target="topic">topic</button>
+    <button data-target="category">category</button>
 </div>
-<div class="sub-nav-container" id="sentiment">
+<div class="sub-nav-container flex" id="sentiment">
     <button data-bgcolor-class="accent">all</button>
     <button data-bgcolor-class="very-negative">very negative</button>
     <button data-bgcolor-class="negative">negative</button>
     <button data-bgcolor-class="neutral">neutral</button>
-    <button data-bgcolor-class="primary">positive</button>
+    <button data-bgcolor-class="positive">positive</button>
+    <button data-bgcolor-class="primary">very positive</button>
+
 </div>
-<div class="sub-nav-container" id="country">
-    <button>all</button>
-    <button>united states</button>
-    <button>united kingdom</button>
-    <button>china</button>
-    <button>new zealand</button>
+<div class="sub-nav-container flex" id="country">
+    <button >all</button>
+    <button class="country-btn" data-country="us">US</button>
+    <button class="country-btn" data-country="uk">UK</button>
+    <button class="country-btn" data-country="us">CN</button>
+    <button class="country-btn" data-country="nz">NZ</button>
 </div>
-<div class="sub-nav-container" id="topic">
+<div class="sub-nav-container flex" id="category">
     <button>all</button>
     <button>world</button>
     <button>finance</button>

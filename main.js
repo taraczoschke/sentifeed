@@ -42,15 +42,41 @@ $(".main-nav-container button").on("click", function() {
     $(".main-nav-container button").not(this).removeClass("scaled primary");
 });
 
-$("#sentiment button, #country button, #topic button").each(function() {
+$(".sub-nav-container button").each(function() {
     handleButtonHover($(this));
     handleButtonClick($(this));
 });
 
+$(".sub-nav-container button:first-child").each(function() {
+    $(this).click();
+});
+
+// Event listener for buttons in sub-nav-container
+$(".sub-nav-container button").on("click", function() {
+    var container = $(this).closest('.sub-nav-container');
+    var firstButton = container.find("button:first-child");
+
+    // Deselect all other buttons in the same container
+    container.find("button").not(this).removeClass("clicked scaled accent");
+
+    // Check if the clicked button is not the first button
+    if (!$(this).is(firstButton)) {
+        if (firstButton.hasClass("clicked")) {
+            firstButton.removeClass("clicked scaled accent");
+        }
+    }
+
+    if (container.find("button.clicked").length === 0) {
+        firstButton.addClass("clicked scaled accent");
+    }
+
+});
+
+
 
 const apiKey = '13415200668243cda3e3f7b6833749e1'; 
-const query = 'news'; // You can change this query dynamically
-const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&apiKey=${apiKey}`;
+const query = 'news'; 
+const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&apiKey=${apiKey}`;
 const sentimentClasses = ["very-pos", "pos", "neg", "neu", "very-neg"]; // Array of sentiment classes
 
 fetch(apiUrl)
@@ -81,7 +107,7 @@ fetch(apiUrl)
                         </div>
                         <div class="card-content">
                             <h2 class="headline">${article.title}</h2>
-                            <p>${article.description || article.content}</p>
+                            <p>${article.description}</p>
                         </div>
                     </div>
                 `;
@@ -93,6 +119,11 @@ fetch(apiUrl)
         console.error('There has been a problem with your fetch operation:', error);
     });
 
+// card click and hover 
+// $(".card img").on("click", function () {
+//     const href = $(this).find("a").attr("href");
+//     window.location.href = href;
+//     })
 
 
     // $('.circle-button-container').hide()
