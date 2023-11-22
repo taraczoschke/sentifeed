@@ -4,73 +4,47 @@ $('.main-button').click(function() {
     var targetId = $(this).data("target");
     var targetContainer = $('#' + targetId);
 
-        targetContainer.slideToggle();
+    targetContainer.slideToggle();
+
+    $(this).toggleClass('primary scaled');
+    $(this).toggleClass('selected');
+
     })
 
-// function handleButtonHover(button) {
-//     var bgColorClass = button.data("bgcolor-class") || 'accent';
-//     button.on("mouseenter", function() {
-//         if (!$(this).hasClass("clicked")) {
-//             $(this).addClass(bgColorClass);
-//         }
-//     }).on("mouseleave", function() {
-//         if (!$(this).hasClass("clicked")) {
-//             $(this).removeClass(bgColorClass);
-//         }
-//     });
-// }
+    const radioButtons = document.querySelectorAll('#sentiment input[type="radio"], #category input[type="radio"], #country input[type="radio"]');
 
-// function handleButtonClick(button) {
-//     button.on("click", function() {
-//         $(this).toggleClass("clicked scaled");
-//         var bgColorClass = $(this).data("bgcolor-class") || 'accent';
-//         if ($(this).hasClass("clicked")) {
-//             $(this).addClass(bgColorClass);
-//         } else {
-//             $(this).removeClass(bgColorClass);
-//         }
-//     });
-// }
+    let lastChecked = {}; // Object to keep track of the last checked radio button for each group
 
-// $(".main-nav-container button").on("click", function() {
-//     $(this).toggleClass("scaled primary");
-//     $(".main-nav-container button").not(this).removeClass("scaled primary");
-// });
+    radioButtons.forEach(radio => {
+        // Initialize lastChecked for each group with the first radio button
+        if (!lastChecked[radio.name]) {
+            lastChecked[radio.name] = document.querySelector(`input[name="${radio.name}"]:checked`) || radio;
+        }
 
-// $(".sub-nav-container button").each(function() {
-//     handleButtonHover($(this));
-//     handleButtonClick($(this));
-// });
+        radio.addEventListener('click', function() {
+            // Check if the clicked radio button is the currently selected one for its group
+            if (lastChecked[this.name] === this) {
+                // If yes, deselect it and select the first radio button of its group
+                this.checked = false;
+                const firstButtonOfGroup = document.querySelector(`input[name="${this.name}"]`);
+                firstButtonOfGroup.checked = true;
+                lastChecked[this.name] = firstButtonOfGroup;
+            } else {
+                // If no, update the lastChecked for its group to the currently selected radio button
+                lastChecked[this.name] = this;
+            }
+        });
+    });
 
 
-
-// // Event listener for buttons in sub-nav-container
-// $(".sub-nav-container button").on("click", function() {
-//     var container = $(this).closest('.sub-nav-container');
-//     var firstButton = container.find("button:first-child");
-
-//     // Deselect all other buttons in the same container
-//     container.find("button").not(this).removeClass("clicked scaled accent");
-
-//     // Check if the clicked button is not the first button
-//     if (!$(this).is(firstButton)) {
-//         if (firstButton.hasClass("clicked")) {
-//             firstButton.removeClass("clicked scaled accent");
-//         }
-//     }
-
-//     if (container.find("button.clicked").length === 0) {
-//         firstButton.addClass("clicked scaled accent");
-//     }
-
-// });
-
+    // Initialize lastChecked with the first radio button
+    lastChecked = radioButtons[0];
 
 
 const apiKey = '13415200668243cda3e3f7b6833749e1'; 
 const query = 'news'; 
 const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&apiKey=${apiKey}`;
-const sentimentClasses = ["very-pos", "pos", "neg", "neu", "very-neg"]; // Array of sentiment classes
+const sentimentClasses = ["pos", "neu", "neg", "very-neg"]; // Array of sentiment classes
 
 fetch(apiUrl)
     .then(response => {

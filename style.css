@@ -3,9 +3,8 @@
 :root {
   --negative: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(216, 30, 50, 1) 150%);
   --med-negative: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(235, 100, 20, 1) 150%);
-  --neutral: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%,rgb(154, 155, 157) 150%);
-  --positive: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 200, 10, 1) 150%);
-  --very-positive: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(30, 190, 100, 1) 150%);
+  --neutral: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 200, 10, 1) 150%);
+  --positive: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(30, 190, 100, 1) 150%);
 
   
   --fw-400: 400;
@@ -45,35 +44,28 @@
     background: var(--positive);
 }
 
-.very-pos-bg {
-  background: var(--very-positive);
-}
 
 
 /* solid colors */
 
 .accent {
-  background: var(--accent)  !important;
+  background: var(--accent)  
 }
 
 .primary {
-    background: var(--primary) !important;
+    background: var(--primary) 
 }
 
 .very-negative {
-    background: var(--red) !important;
+    background: var(--red) 
 }
 
 .negative {
-    background: var(--orange) !important;
+    background: var(--orange) 
 }
 
 .neutral {
-    background: var(--grey) !important;
-}
-
-.positive {
-  background: var(--yellow) !important;
+    background: var(--yellow) 
 }
 
 
@@ -89,8 +81,6 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-
-/* psuedo classes */
 
 
 .flex {
@@ -116,6 +106,110 @@ h1 {
 }
 
 
+input[type="radio"] {
+  display: none;
+}
+
+nav {
+  justify-content: flex-start;
+  margin-block: 2rem;
+  width: 100%;
+}
+.nav-container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem
+}
+
+.main-nav-container, .sub-nav-container {
+  flex-grow: 1; 
+}
+
+.main-nav-container {
+  align-items: center;
+}
+.sub-nav-container {
+  flex-direction: column;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: .5rem
+}
+
+.sub-nav-container .button {
+  font-size: .684rem;
+}
+
+input[type="radio"]:checked + label.button, label.button:hover {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: lowercase;
+    white-space: nowrap;
+
+    margin: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(50, 50, 50);
+    color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.main-button {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  background-color: var(--black);
+}
+
+.main-button:hover {
+  background: var(--primary);
+}
+
+.submit {
+  flex-grow: 0; 
+
+  background-color: var(--primary);
+  text-transform: uppercase;
+}
+
+.submit:hover {
+  background: var(--accent);
+}
+
+.main-button.selected {
+  background: var(--primary); 
+}
+
+#sentiment #positive:checked + .positive-label,
+#sentiment .positive-label:hover {
+    background-color: var(--primary);
+}
+
+#sentiment #neutral:checked + .neutral-label,
+#sentiment .neutral-label:hover {
+    background-color: var(--yellow);
+}
+
+#sentiment #negative:checked + .negative-label,
+#sentiment .negative-label:hover {
+    background-color: var(--orange);
+}
+
+#sentiment #very_negative:checked + .very-negative-label,
+#sentiment .very-negative-label:hover {
+    background-color: var(--red);
+}
 /* card container & cards  */
 
 .card-container {
@@ -237,85 +331,6 @@ button {
 
 
 
-input[type="radio"] {
-  display: none;
-}
-
-nav {
-  justify-content: flex-start;
-  margin-block: 2rem;
-  width: 100%;
-}
-.nav-container {
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: .5rem
-}
-
-.main-nav-container, .sub-nav-container {
-  flex-grow: 1; /* Allows these containers to grow as needed */
-}
-
-.main-nav-container {
-  align-items: center;
-}
-.sub-nav-container {
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  gap: .5rem;
-  margin-top: .5rem
-}
-
-.sub-nav-container .button {
-  font-size: .684rem;
-}
-
-input[type="radio"]:checked + label.button, label.button:hover {
-  background-color: var(--accent);
-  color: var(--white);
-}
-
-.button {
-    font-family: inherit;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    text-transform: lowercase;
-    white-space: nowrap;
-
-    margin: 0;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: rgb(50, 50, 50);
-    color: var(--white);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.main-button {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  font-weight: 400;
-  background-color: var(--black);
-}
-
-.main-button:hover {
-  background: var(--primary);
-}
-
-.submit {
-  flex-grow: 0; 
-
-  background-color: var(--accent);
-  text-transform: lowercase;
-}
-
 /* media query */
 
 @media (min-width: 1080px) {
@@ -329,9 +344,9 @@ input[type="radio"]:checked + label.button, label.button:hover {
 
 .sidebar {
   grid-column: sidebar-start / sidebar-end;
-  display: flex; /* Make sidebar a flex container */
-  flex-direction: column; /* Align children vertically */
-  align-items: center; /* Center children horizontally */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 
 
 }
@@ -345,8 +360,8 @@ h1 {
 }
 
 nav {
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: center;
+  width: 10rem;
 }
 
 .nav-container {
@@ -362,7 +377,9 @@ nav {
 }
 
 .sub-nav-container {
-  flex-direction: row;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+
 }
 
 }
