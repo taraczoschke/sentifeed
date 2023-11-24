@@ -41,10 +41,12 @@ $('.main-button').click(function() {
     lastChecked = radioButtons[0];
 
 
-const apiKey = '13415200668243cda3e3f7b6833749e1'; 
+
+
+const apiKey = 'c90bf5366948496b842fa35d8776398c'; 
 const query = 'news'; 
 const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&apiKey=${apiKey}`;
-const sentimentClasses = ["pos", "neu", "neg", "very-neg"]; // Array of sentiment classes
+const sentimentClasses = ["pos", "neg", "neu", "very-neg"]; // Array of sentiment classes
 
 fetch(apiUrl)
     .then(response => {
@@ -64,6 +66,23 @@ fetch(apiUrl)
                 const formattedDate = date.toLocaleString('en-US', {
                     month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false
                 });
+
+                // var sentimentClass = "";
+                // switch (article.sentiment?.toLowerCase()) {
+                //     case "positive":
+                //         sentimentClass = "pos";
+                //         break;
+                //     case "negative":
+                //         sentimentClass = "neg";
+                //         break;
+                //     case "neutral":
+                //         sentimentClass = "neu";
+                //         break;
+                //     case "very-negative":
+                //         sentimentClass = "very-neg";
+                //         break;
+                // }
+
 
                 var articleHtml = `
                     <div class="card ${sentimentClass}-bg">
@@ -86,32 +105,11 @@ fetch(apiUrl)
         console.error('There has been a problem with your fetch operation:', error);
     });
 
-// card click and hover 
-// $(".card img").on("click", function () {
-//     const href = $(this).find("a").attr("href");
-//     window.location.href = href;
-//     })
-
 
     // $('.circle-button-container').hide()
     // $('.rate-button').on("click", function () {
     //     $('.circle-button-container').slideToggle()
     // })
     
-                // var sentimentClass = "";
-                // switch (article.sentiment?.toLowerCase()) {
-                //     case "positive":
-                //         sentimentClass = "pos";
-                //         break;
-                //     case "negative":
-                //         sentimentClass = "neg";
-                //         break;
-                //     case "neutral":
-                //         sentimentClass = "neu";
-                //         break;
-                //     case "very-negative":
-                //         sentimentClass = "very-neg";
-                //         break;
-                // }
 
 
