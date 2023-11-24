@@ -117,11 +117,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem
-}
-
-.main-nav-container, .sub-nav-container {
-  flex-grow: 1; 
+  gap: rem
 }
 
 .main-nav-container {
@@ -336,6 +332,7 @@ button {
 .content-grid {
   display: grid;
   grid-template-columns: [margin-start] 5rem [sidebar-start] 1fr [sidebar-end content-start] 3.5fr [content-end margin-end] 5rem;
+  grid-template-rows: auto;
   gap: 3rem;
   margin: 3rem 0;
 }
@@ -345,8 +342,7 @@ button {
   display: flex;
   flex-direction: column; 
   align-items: center;
-
-
+  left: 130px;
 }
 
 .content {
@@ -357,6 +353,7 @@ h1 {
     line-height: 1.2;
 }
 
+
 nav {
   justify-content: center;
   width: 10rem;
@@ -366,18 +363,17 @@ nav {
   flex-direction: column; 
   align-items: center;
   width: 100%; 
-  gap: 1.5rem
+  gap: 1.5rem;
 }
 
 .main-nav-container, .sub-nav-container, .submit {
   flex-grow: 1; 
   width: 100%;
+
 }
 
 .sub-nav-container {
   flex-direction: column;
-  /* flex-wrap: wrap; */
-
 }
 
 }
