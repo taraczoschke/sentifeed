@@ -1,19 +1,15 @@
-$('.sub-nav-container').hide();
+    $('.sub-nav-container').hide();
 
-$('.main-button').click(function() {
-    var targetId = $(this).data("target");
-    var targetContainer = $('#' + targetId);
-
-    targetContainer.slideToggle();
-
-    $(this).toggleClass('primary scaled');
-    $(this).toggleClass('selected');
-
-    })
+    $('.main-button').click(function() {
+        var targetId = $(this).data("target");
+        var targetContainer = $('#' + targetId);
+        targetContainer.slideToggle();
+        $(this).toggleClass('primary scaled');
+        $(this).toggleClass('selected');
+    });
 
     const radioButtons = document.querySelectorAll('#sentiment input[type="radio"], #category input[type="radio"], #country input[type="radio"]');
-
-    let lastChecked = {}; 
+    let lastChecked = {};
 
     radioButtons.forEach(radio => {
         if (!lastChecked[radio.name]) {
@@ -32,37 +28,32 @@ $('.main-button').click(function() {
         });
     });
 
-    lastChecked = radioButtons[0];
-
 
     const apiKey = 'c90bf5366948496b842fa35d8776398c'; 
     let apiUrl = ''; 
 
+
     function setInitialUrl() {
         apiUrl = `https://newsapi.org/v2/everything?q=us-news&language=en&apiKey=${apiKey}`;
     }
-    
+
+
     document.addEventListener('DOMContentLoaded', function() {
         console.log("DOM fully loaded and parsed");
         setInitialUrl(); 
         fetchArticles(); 
     });
-    
+
     document.getElementById('myForm').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        fetchArticles(); 
+        event.preventDefault();
+        fetchArticles();
     });
-    
+
     function fetchArticles() {
-        const sentimentClasses = ["pos", "neu", "neg", "very-neg"]; // Array of sentiment classes
-    
+        const sentimentClasses = ["pos", "neu", "neg", "very-neg"];
         const selectedCategory = document.querySelector('input[name="category"]:checked')?.value;
-    
-        apiUrl = selectedCategory ? 
-            `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}&language=en&apiKey=${apiKey}` : apiUrl;
-    
-        console.log("Fetching articles from URL:", apiUrl);
-    
+        apiUrl = selectedCategory ? `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}&language=en&apiKey=${apiKey}` : apiUrl;
+
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -71,45 +62,21 @@ $('.main-button').click(function() {
                 return response.json();
             })
             .then(data => {
-                console.log("Data received:", data);
-    
                 document.querySelector('.card-container').innerHTML = '';
-    
                 const articles = data.articles;
                 articles.forEach(article => {
                     const randomIndex = Math.floor(Math.random() * sentimentClasses.length);
                     const sentimentClass = sentimentClasses[randomIndex];
                     const modifiedTitle = article.title.replace(/ - .*/, '').trim();
                     const modifiedSourceName = article.source.name.split('.')[0].trim();
-
-
-    
                     if (article.urlToImage) {
                         const date = new Date(article.publishedAt);
                         const formattedDate = date.toLocaleString('en-US', {
                             month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false
                         });
 
-
-//                 // var sentimentClass = "";
-//                 // switch (article.sentiment?.toLowerCase()) {
-//                 //     case "positive":
-//                 //         sentimentClass = "pos";
-//                 //         break;
-//                 //     case "negative":
-//                 //         sentimentClass = "neg";
-//                 //         break;
-//                 //     case "neutral":
-//                 //         sentimentClass = "neu";
-//                 //         break;
-//                 //     case "very-negative":
-//                 //         sentimentClass = "very-neg";
-//                 //         break;
-//                 // }
-
-
                         var articleHtml = `
-                            <div class="card ${sentimentClass}-bg">
+                            <div class="card ${sentimentClass}-bg" onclick="openModal(this)">
                                 <img src="${article.urlToImage}">
                                 <div class="card-details">
                                     <p>${formattedDate}</p>
@@ -129,14 +96,25 @@ $('.main-button').click(function() {
                 console.error('There has been a problem with your fetch operation:', error);
             });
     }
-    
 
+    // Modal functionality
+    window.openModal = function(card) {
+        var modalContent = card.cloneNode(true);
+        document.querySelector('.modal-content').innerHTML = modalContent.innerHTML;
+        document.getElementById('articleModal').style.display = 'flex';
 
+            $('header, main').addClass('blur-effect');
 
-//     // $('.circle-button-container').hide()
-//     // $('.rate-button').on("click", function () {
-//     //     $('.circle-button-container').slideToggle()
-//     // })
-    
+    }
 
+    window.onclick = function(event) {
+        var modal = document.getElementById('articleModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            $('header, main').removeClass('blur-effect');
 
+        }
+
+        
+
+    }
