@@ -8,6 +8,11 @@
         $(this).toggleClass('selected');
     });
 
+    $('.rate-button').click(function() {
+        $(this).toggleClass('accent scaled');
+        $(this).toggleClass('selected');
+    })
+
     const radioButtons = document.querySelectorAll('#sentiment input[type="radio"], #category input[type="radio"], #country input[type="radio"]');
     let lastChecked = {};
 
@@ -29,7 +34,7 @@
     });
 
 
-    const apiKey = 'c90bf5366948496b842fa35d8776398c'; 
+    const apiKey = '13415200668243cda3e3f7b6833749e1'; 
     let apiUrl = ''; 
 
 
@@ -44,7 +49,7 @@
         fetchArticles(); 
     });
 
-    document.getElementById('myForm').addEventListener('submit', function(event) {
+    document.getElementById('navForm').addEventListener('submit', function(event) {
         event.preventDefault();
         fetchArticles();
     });
@@ -68,7 +73,17 @@
                     const randomIndex = Math.floor(Math.random() * sentimentClasses.length);
                     const sentimentClass = sentimentClasses[randomIndex];
                     const modifiedTitle = article.title.replace(/ - .*/, '').trim();
-                    const modifiedSourceName = article.source.name.split('.')[0].trim();
+
+                    let fullSourceName = article.source.name.trim();
+                    let modifiedSourceName = fullSourceName.split('.')[0].trim();
+                
+                    if (fullSourceName === 'BBC News') {
+                        modifiedSourceName = 'BBC';
+                    } else if (fullSourceName === 'The Wall Street Journal') {
+                        modifiedSourceName = 'WSJ';
+                    }
+                
+                    
                     if (article.urlToImage) {
                         const date = new Date(article.publishedAt);
                         const formattedDate = date.toLocaleString('en-US', {
@@ -76,17 +91,19 @@
                         });
 
                         var articleHtml = `
-                            <div class="card ${sentimentClass}-bg" onclick="openModal(this)">
+                            <div class="card ${sentimentClass}-bg" onclick="openModal(this)" data-url="${article.url}">
                                 <img src="${article.urlToImage}">
+                                <div class="card-content-container">
                                 <div class="card-details">
                                     <p>${formattedDate}</p>
-                                    <a href="${article.url}">${modifiedSourceName}</a>
+                                    <a href="${article.url}" target="_blank">${modifiedSourceName}</a>
                                 </div>
                                 <div class="card-content">
                                     <h2 class="headline">${modifiedTitle}</h2>
                                     <p>${article.description}</p>
                                 </div>
-                            </div>
+                            </div> 
+                            </div> 
                         `;
                         document.querySelector(".card-container").insertAdjacentHTML('beforeend', articleHtml);
                     }
@@ -100,21 +117,94 @@
     // Modal functionality
     window.openModal = function(card) {
         var modalContent = card.cloneNode(true);
+        var articleUrl = card.getAttribute('data-url'); 
         document.querySelector('.modal-content').innerHTML = modalContent.innerHTML;
-        document.getElementById('articleModal').style.display = 'flex';
+    
+        var additionalContent = `
+        <div class=footer-container>
+        <form id="ratingForm" class="rating-container">
+        <button type="button" class="rate-button">rate me</button>
+        <div class="circle-button-container">
+          <label>
+            <button type="submit" class="circle-button primary"></button>
+            <input type="radio" name="sentiment-rating" value="Positive">
+          </label>
+          <label>
+            <button type="submit" class="circle-button neutral"></button>
+            <input type="radio" name="sentiment-rating" value="Neutral">
+          </label>
+          <label>
+            <button type="submit" class="circle-button negative"></button>
+            <input type="radio" name="sentiment-rating" value="Negative">
+          </label>
+          <label>
+            <button type="submit" class="circle-button very-negative"></button>
+            <input type="radio" name="sentiment-rating" value="Very Negative">
+          </label>            
+        </div>
+      </form>
+      <button class="read-more">read more</button>
 
-            $('header, main').addClass('blur-effect');
+      </div>
+    `;
+    
+    document.querySelector('.modal-content').insertAdjacentHTML('beforeend', additionalContent);
+
+    var readMoreButton = document.querySelector('.modal-content .read-more');
+    readMoreButton.onclick = function() {
+        window.open(articleUrl, '_blank');
+};
+
+        $('#articleModal').css('display', 'flex').animate({opacity: 1}, 100);
+
+        
+        $('header, main').addClass('blur-effect');
 
     }
 
     window.onclick = function(event) {
-        var modal = document.getElementById('articleModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-            $('header, main').removeClass('blur-effect');
-
+        var modal = $('#articleModal');
+        if (event.target == modal.get(0)) {
+            modal.animate({opacity: 0}, 100, function() {
+                $(this).hide();
+                $('header, main').removeClass('blur-effect');
+            });
         }
+    };
+    
 
-        
+    $(document).on('click', '.rate-button', function() {
+        const $circleButtonContainer = $(this).closest('#ratingForm').find('.circle-button-container');
+    
+        if ($circleButtonContainer.css('visibility') === 'visible') {
+            $circleButtonContainer.animate({
+                opacity: 0
+            }, 250, function() {
+                $circleButtonContainer.css({
+                    'visibility': 'hidden',
+                    'left': '-30px' 
+                });
+            });
+        } else {
+            $circleButtonContainer.css({
+                'visibility': 'visible',
+                'left': '-30px' 
+            }).animate({
+                left: '0px',
+                opacity: 1 
+            }, 500);
+        }
+    });
 
-    }
+    $(document).on('submit', '#ratingForm', function(event) {
+        var clickedButton = $(document.activeElement);
+
+        event.preventDefault();
+
+        $('.circle-button').not(clickedButton).hide();
+            clickedButton.addClass('active');
+    });
+    
+    $(document).on('click', '.rate-button', function() {
+        $(this).toggleClass('selected');
+    })
