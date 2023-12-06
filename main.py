@@ -1,3 +1,8 @@
+# TODO: gcloud app deploy
+# ensure yaml: 
+# runtime: python39
+# entrypoint: uvicorn main:app --host=0.0.0.0 --port=${PORT}
+
 import os
 import joblib
 import json
@@ -8,6 +13,17 @@ from newsapi import NewsApiClient
 from typing import Optional, List
 from fastapi.responses import RedirectResponse
 from starlette.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 # Initialize FastAPI app
 app = FastAPI()
